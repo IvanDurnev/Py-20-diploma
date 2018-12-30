@@ -1,6 +1,6 @@
 import sys
 from Vkapi import VkUser
-from functions import *
+from functions import get_user_name, TOKEN, find_secret_groups
 
 
 if __name__ == '__main__':
