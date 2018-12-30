@@ -1,0 +1,2 @@
+TOKEN = '821d8ec8561b2a0575a68b2944ef08719468d0c6bcf7272c1459aa94d4c8af12989d6d3e50ee4a445a598'
+REQUEST_URL = 'https://api.vk.com/method/'

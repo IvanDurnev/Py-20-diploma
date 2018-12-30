@@ -1,3 +1,4 @@
+# функция для получения токена
 from urllib.parse import urlencode, urlsplit
 
 APP_ID = 6773685
