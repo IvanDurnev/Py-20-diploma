@@ -1,17 +1,23 @@
 import requests
 from settings import REQUEST_URL
+from time import sleep
 
 
 class VkAPI:
     token = ''
 
     def _request_get(self, method, request_parameters):
-        response = requests.get(REQUEST_URL + method, request_parameters).json()
-        try:
-            return response['response']
-        except KeyError:
-            print(f"Что-то пошло не так, формулировка ошибки: '{response['error']['error_msg']}'")
-            return None
+        number_of_attempts = 10
+        for i in range(number_of_attempts):
+            try:
+                response = requests.get(REQUEST_URL + method, request_parameters).json()
+                return response['response']
+            except KeyError:
+                print(f"Не удалось получить ответ от сервера, попыток {i}")
+                if 'error' in response.keys():
+                    print(f"{response['error']['error_msg']}")
+                sleep(1)
+                return None
 
 class VkUser(VkAPI):
     id_num = ''
