@@ -36,7 +36,7 @@ class VkUser(VkAPI):
                     self.id_num = information[0]['id']
                 print(f'С нами {self.id_num} {self.first_name} {self.last_name}')
             else:
-                print('Пользователь удален или забанен')
+                print('Пользователь удален или заблокирован')
                 self.invalidUser = True
             if 'is_closed' in information[0] and information[0]['is_closed'] == True:
                 print('Это приватный аккаунт')
