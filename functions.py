@@ -10,7 +10,8 @@ def save_result(username, groups):
         CurrentGroup = VkGroup(group, TOKEN)
         advanced_groups.setdefault(group, []).append(CurrentGroup.groupName)
     json_advanced_groups = json.dumps(advanced_groups, ensure_ascii = False)
-    with open(username+'.json', 'w') as result_file:
+
+    with open(username + '.json', 'w') as result_file:
         result_file.write(json_advanced_groups)
     print(f'Результат проверки пользователя сохранен в файл "{username}.json"')
 
@@ -18,6 +19,7 @@ def find_secret_groups(user):
     groups = user.groups()['items']
     friends = user.friends()['items']
     print(f'У {user.first_name} {len(friends)} друзей и {len(groups)} групп')
+
     for group in groups:
         CurrentGroup = VkGroup(group, TOKEN)
         print(f'Проверяем группу {CurrentGroup.groupName}')
@@ -28,11 +30,15 @@ def find_secret_groups(user):
                 break
             else:
                 print(f'{friend} не в группе {group}')
+
     print(f'Группы в которых есть только {user.first_name} и нет его друзей:')
+
     for index, group in enumerate(groups):
         CurrentGroup = VkGroup(group, TOKEN)
-        print(f"{index+1}) {CurrentGroup.groupName}")
-    save_result(user.first_name+' '+user.last_name, groups)
+        print(f"{index + 1}) {CurrentGroup.groupName}")
+
+    username = user.first_name+' '+user.last_name
+    save_result(username, groups)
 
 def get_user_name(userLink):
     if 'http' in userLink:

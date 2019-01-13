@@ -9,8 +9,10 @@ if __name__ == '__main__':
         userLink = sys.argv[1]
     else:
         userLink = input('Какого пользователя проверим (ссылка на страницу, id)?\n')
+
     userName = get_user_name(userLink)
     user = VkUser(userName, TOKEN)
+
     if not user.invalidUser:
         try:
             find_secret_groups(user)

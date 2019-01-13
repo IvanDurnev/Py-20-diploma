@@ -69,7 +69,7 @@ class VkUser(VkAPI):
         }
         return self._request_get(method, request_parameters)
 
-    def friends(self, count=None):
+    def friends(self, count = None):
         method = 'friends.get'
         request_parameters = {
             'user_id': self.id_num,
